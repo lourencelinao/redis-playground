@@ -44,9 +44,9 @@ const checkCache = async (req, res, next) => {
 app.get('/store', checkCache, async (req, res) => {
 	const { data } = await axios.get(fakeStoreApi);
 
-	console.log('set cache');
 	await client.set('store', JSON.stringify(data));
 
+  console.log('Fetched from API')
 	return res.json(data);
 });
 
